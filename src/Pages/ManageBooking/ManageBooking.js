@@ -18,6 +18,9 @@ const ManageBooking = ({booking, Bookings, setBookings}) => {
     })
     }
    }
+   else{
+       alert('This package is already confirmed')
+   }
    }
 
     // delete single booking---
