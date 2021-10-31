@@ -19,6 +19,9 @@ const Mybooking = ({booking, myBookings, setBookings}) => {
         })
         }
         }
+        else{
+            alert('This package is already approved.')
+        }
        }
     
     const handleDeleteBookng=(id)=>{
