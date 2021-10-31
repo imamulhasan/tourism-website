@@ -2,27 +2,6 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 
 const Mybooking = ({booking, myBookings, setBookings}) => {
-
-    const handleUpadateStatus=(id)=>{     
-       
-        if(booking?.status==='pending'){
-            const process = window.confirm('you want to confirm?')
-        if(process){
-            fetch(`https://salty-cove-06755.herokuapp.com/bookings/${id}`,{
-            method:'PUT'
-        })
-        .then(res=> res.json())
-        .then(data=>{
-           if(data.matchedCount>0){
-               window.location.reload(true)
-           }
-        })
-        }
-        }
-        else{
-            alert('This package is already approved.')
-        }
-       }
     
     const handleDeleteBookng=(id)=>{
         const process = window.confirm('You want to delete this travel?')
@@ -59,17 +38,14 @@ const Mybooking = ({booking, myBookings, setBookings}) => {
             <Card.Text>
                 <p>Status: {booking?.status}</p>
             </Card.Text>
+            {booking.status==='pending'&&<button onClick={()=> handleDeleteBookng(booking._id)} className="btn btn-outline-danger mb-2"><i className="fas fa-trash-alt"></i></button>}
             <Card.Text>
                 <p>Price: {booking.price} BDT</p>
             </Card.Text>
             </div>
             <div className="d-flex justify-content-between">
-            <button onClick={()=>handleUpadateStatus(booking._id)} className="btn btn-success">confirm</button>
-            <button onClick={()=> handleDeleteBookng(booking._id)} className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button>
-            </div>
-
-
             
+            </div>
             </Card.Body>
         </Card>
         </Col>
